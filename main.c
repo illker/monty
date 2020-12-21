@@ -29,8 +29,6 @@ int main(int argc, char *argv[])
 			if (empty_str(buffer) == 1)
 			{
 				gv.tokens = parse_buffer(buffer);
-				if (gv.tokens[1])
-					gv.g_n = atoi(gv.tokens[1]);
 				get_function(gv.tokens[0], lines)(&stack, lines);
 				free(gv.tokens);
 			}

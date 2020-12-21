@@ -19,6 +19,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
+	gv.g_n = atoi(gv.tokens[1]);
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
