@@ -87,19 +87,22 @@ int main(int argc, char *argv[])
 		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	fp = fopen(argv[1], "r");
-
 	if (fp)
 	{
 		while (fgets(buffer, 1024, (FILE *) fp) != NULL)
 		{
 			tokens = parse_buffer(buffer);
 			if (tokens[1])
-				global_variable = atoi(tokens[1]);
-			get_function(tokens[0], lines)(&stack, global_variable);
+				g_n = atoi(tokens[1]);
+			get_function(tokens[0], lines)(&stack, g_n);
 			lines++;
 			free(tokens);
+			if (g_n == -1)
+			{
+				fclose(fp);
+				exit(EXIT_FAILURE);
+			}
 		}
 		fclose(fp);
 		free_dlist(stack);

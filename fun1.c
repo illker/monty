@@ -10,9 +10,12 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
-	if (global_variable == 0)
+	if (g_n == 0)
 	{
 		fprintf(stderr, "L %d: usage: push integer\n", line_number);
+		free_dlist(*stack);
+		g_n = -1;
+		return;
 	}
 
 	new = malloc(sizeof(stack_t));
@@ -20,7 +23,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 		return;
 
-	new->n = global_variable;
+	new->n = g_n;
 	new->prev = NULL;
 
 	if (*stack)
