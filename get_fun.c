@@ -32,6 +32,6 @@ void (*get_function(char *str, unsigned int line))(stack_t **, unsigned int)
 			return (func[i].f);
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s", line, str);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line, str);
 	exit(EXIT_FAILURE);
 }
