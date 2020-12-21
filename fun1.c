@@ -15,6 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_dlist(*stack);
 		free(gv.tokens);
+		fclose(gv.fp);
 		exit(EXIT_FAILURE);
 	}
 
@@ -25,6 +26,7 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		free_dlist(*stack);
 		free(gv.tokens);
+		fclose(gv.fp);
 		exit(EXIT_FAILURE);
 	}
 
