@@ -13,9 +13,6 @@ int main(int argc, char *argv[])
 	stack_t *stack;
 	unsigned int lines = 1;
 
-	gv.tokens = NULL;
-	gv.g_n = 0;
-
 	stack = NULL;
 	if (argc != 2)
 	{
