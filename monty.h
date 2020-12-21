@@ -67,6 +67,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void free_dlist(stack_t *stack);
 
+int empty_str(char *str);
 int is_number(char *str);
 char **parse_buffer(char *buffer);
 void (*get_function(char *, unsigned int))(stack_t **, unsigned int);
