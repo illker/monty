@@ -43,7 +43,7 @@ void (*get_function(char *str, unsigned int line))(stack_t **, unsigned int)
 char **parse_buffer(char *buffer)
 {
 	int n = 1;
-	char **line, *token;
+	char **line;
 
 	if (!buffer)
 		return (NULL);
@@ -115,6 +115,7 @@ int main(int argc, char *argv[])
  * free_dlist - Function that frees a stack_t list.
  * @head: Pointer with address to head node.
  */
+
 void free_dlist(stack_t *head)
 {
 	stack_t *copy;

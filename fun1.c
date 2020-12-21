@@ -10,6 +10,11 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
+	if (global_variable == 0)
+	{
+		fprintf(stderr, "L %d: usage: push integer\n", line_number);
+	}
+
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
@@ -34,7 +39,7 @@ void push(stack_t **stack, unsigned int line_number)
  * @line_number: number of the new node.
  */
 
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
@@ -54,6 +59,9 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if (*stack)
 		printf("%d\n", (*stack)->n);
+	else
+		fprintf(stderr, "L %d: can't pint, stack empty\n", line_number);
+
 }
 
 /**
@@ -66,19 +74,21 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-	if (*stack == NULL)
-		return;
-
-	temp = *stack;
-
-	if (temp->next)
+	if (*stack)
 	{
-		*stack = temp->next;
-		(*stack)->prev = NULL;
+		temp = *stack;
+
+		if (temp->next)
+		{
+			*stack = temp->next;
+			(*stack)->prev = NULL;
+		}
+		else
+			*stack = NULL;
+		free(temp);
 	}
 	else
-		*stack = NULL;
-	free(temp);
+		fprintf(stderr, "L %d: can't pop an empty stack\n", line_number);
 }
 
 /**
