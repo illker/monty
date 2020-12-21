@@ -99,7 +99,6 @@ int main(int argc, char *argv[])
 			get_function(tokens[0], lines)(&stack, global_variable);
 			lines++;
 			free(tokens);
-			printf("--------------------\n");
 		}
 		fclose(fp);
 		free_dlist(stack);
