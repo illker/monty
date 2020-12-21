@@ -12,7 +12,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (g_n == 0)
 	{
-		fprintf(stderr, "L %d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_dlist(*stack);
 		g_n = -1;
 		return;
@@ -63,7 +63,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (*stack)
 		printf("%d\n", (*stack)->n);
 	else
-		fprintf(stderr, "L %d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 
 }
 
@@ -91,7 +91,7 @@ void pop(stack_t **stack, unsigned int line_number)
 		free(temp);
 	}
 	else
-		fprintf(stderr, "L %d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 }
 
 /**
@@ -117,7 +117,7 @@ void swap(stack_t **stack, unsigned int line_n)
 	}
 	else
 	{
-		fprintf(stderr, "L %d: can't swap, stack too short\n", line_n);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
 	}
 }

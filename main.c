@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
 			tokens = parse_buffer(buffer);
 			if (tokens[1])
 				g_n = atoi(tokens[1]);
-			get_function(tokens[0], lines)(&stack, g_n);
+			get_function(tokens[0], lines)(&stack, lines);
 			lines++;
 			free(tokens);
 			if (g_n == -1)
