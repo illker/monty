@@ -32,7 +32,7 @@ void (*get_function(char *str, unsigned int line))(stack_t **, unsigned int)
 			return (func[i].f);
 		i++;
 	}
-	fprintf(stderr, "L %d: unknown instruction %s", line, str);
+	fprintf(stderr, "L%d: unknown instruction %s", line, str);
 	exit(EXIT_FAILURE);
 }
 
@@ -75,9 +75,7 @@ char **parse_buffer(char *buffer)
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char buff[1024];
-	char *buffer = buff;
-	char **tokens = NULL;
+	char buff[1024], *buffer = buff, **tokens = NULL;
 	stack_t *stack;
 	unsigned int lines = 1;
 
