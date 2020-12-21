@@ -39,6 +39,7 @@ typedef struct instruction_s
  * struct global_variables - include glb var.
  * @tokens: a buffer.
  * @g_n: node number.
+ * @fp: file descriptor pointer.
  *
  * Description: buffer and node number.
  */
@@ -46,6 +47,7 @@ typedef struct global_variables
 {
 	char **tokens;
 	int g_n;
+	FILE *fp;
 } g_v;
 
 g_v gv;
