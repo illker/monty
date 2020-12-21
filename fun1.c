@@ -73,8 +73,10 @@ void pint(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_dlist(*stack);
+		free(gv.tokens);
+		fclose(gv.fp);
+		exit(EXIT_FAILURE);
 	}
-
 }
 
 /**
@@ -101,7 +103,12 @@ void pop(stack_t **stack, unsigned int line_number)
 		free(temp);
 	}
 	else
+	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free(gv.tokens);
+		fclose(gv.fp);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
@@ -128,6 +135,8 @@ void swap(stack_t **stack, unsigned int line_n)
 	else
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_n);
+		free(gv.tokens);
+		fclose(gv.fp);
 		exit(EXIT_FAILURE);
 	}
 }
