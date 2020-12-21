@@ -35,8 +35,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* Global Number */
-int g_n;
+/**
+ * struct global_variables - include glb var.
+ * @tokens: a buffer.
+ * @g_n: node number.
+ *
+ * Description: buffer and node number.
+ */
+typedef struct global_variables
+{
+	char **tokens;
+	int g_n;
+} g_v;
+
+g_v gv;
 
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
@@ -52,4 +64,8 @@ void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void free_dlist(stack_t *stack);
+
+int is_number(char *str);
+char **parse_buffer(char *buffer);
+void (*get_function(char *, unsigned int))(stack_t **, unsigned int);
 #endif /* MONTY_H */

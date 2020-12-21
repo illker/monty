@@ -10,20 +10,25 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
-	if (g_n == 0)
+	if (is_number(gv.tokens[1]) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_dlist(*stack);
-		g_n = -1;
-		return;
+		free(gv.tokens);
+		exit(EXIT_FAILURE);
 	}
 
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
-		return;
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_dlist(*stack);
+		free(gv.tokens);
+		exit(EXIT_FAILURE);
+	}
 
-	new->n = g_n;
+	new->n = gv.g_n;
 	new->prev = NULL;
 
 	if (*stack)
@@ -66,7 +71,6 @@ void pint(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_dlist(*stack);
-		g_n = -1;
 	}
 
 }
