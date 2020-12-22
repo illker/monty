@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 	gv.tokens = NULL;
 	gv.g_n = 0;
 	stack = NULL;
+	gv.state = 0;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");

@@ -20,6 +20,13 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	gv.g_n = atoi(gv.tokens[1]);
+
+	if (gv.state == 1)
+	{
+		pushq(stack, line_number);
+		return;
+	}
+
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
@@ -30,7 +37,6 @@ void push(stack_t **stack, unsigned int line_number)
 		fclose(gv.fp);
 		exit(EXIT_FAILURE);
 	}
-
 	new->n = gv.g_n;
 	new->prev = NULL;
 
