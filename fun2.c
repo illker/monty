@@ -77,11 +77,8 @@ void pstr(stack_t **stack, __attribute__((unused))unsigned int line_number)
 	for (; temp; temp = temp->next)
 	{
 		num = temp->n;
-		if (num != 0)
-		{
-			if ((num >= 'a' && num <= 'z') || (num >= 'A' && num <= 'Z'))
-				putchar(num);
-		}
+		if (num != 0 && ((num >= 'a' && num <= 'z') || (num >= 'A' && num <= 'Z')))
+			putchar(num);
 		else
 			break;
 	}
