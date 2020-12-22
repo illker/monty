@@ -60,4 +60,30 @@ void rotl(stack_t **stack, unsigned int line_number)
 		top->next = NULL;
 		top->prev = temp;
 	}
+
+}
+
+/**
+ * pstr - print a string.
+ * @stack: pointer to stack
+ * @line_number: line number of instruction
+ */
+void pstr(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	stack_t *temp;
+	int num = 0;
+
+	temp = *stack;
+	for (; temp; temp = temp->next)
+	{
+		num = temp->n;
+		if (num != 0)
+		{
+			if ((num >= 'a' && num <= 'z') || (num >= 'A' && num <= 'Z'))
+				putchar(num);
+		}
+		else
+			break;
+	}
+	putchar('\n');
 }
