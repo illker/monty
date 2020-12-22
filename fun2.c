@@ -51,6 +51,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 		temp = *stack;
 		top = *stack;
 		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
 
 		while (temp->next)
 			temp = temp->next;
