@@ -33,3 +33,26 @@ void pchar(stack_t **stack, unsigned int line_number)
 	putchar((*stack)->n);
 	putchar('\n');
 }
+
+/**
+ * rotl - rotates the stack to the top.
+ * @stack: pointer to stack
+ * @line_number: line number of instruction
+ */
+
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp, *top;
+
+	(void)line_number;
+	temp = *stack;
+	top = *stack;
+	*stack = (*stack)->next;
+
+	while (temp->next)
+		temp = temp->next;
+
+	temp->next = top;
+	top->next = NULL;
+	top->prev = temp;
+}
