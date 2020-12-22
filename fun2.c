@@ -84,3 +84,32 @@ void pstr(stack_t **stack, __attribute__((unused))unsigned int line_number)
 	}
 	putchar('\n');
 }
+
+/**
+ * rotr - rotates the stack to the bottom.
+ * @stack: pointer to stack
+ * @line_number: line number of instruction
+ * Return: void
+ */
+
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *ntemp = NULL;
+
+        (void)line_number;
+
+	if (stack == NULL && *stack == NULL && (*stack)->next == NULL)
+		return;
+
+	ntemp = *stack;
+
+	while (ntemp->next != NULL)
+		ntemp = ntemp->next;
+
+	ntemp->next = *stack;
+	ntemp->prev->next = NULL;
+	ntemp->prev = NULL;
+	(*stack)->prev = ntemp;
+	*stack = ntemp;
+}
+
